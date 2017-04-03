@@ -1,0 +1,36 @@
+Esta es la base para comenzar un proyecto en CodeIgniter, si lo vas a utilizar futura Bri, porfavor copia y pega los archivos en otra carpeta. No quieres volver a pegarte un tiro para eliminar el index.php, creeme.
+Atte. Bri del pasado 
+
+
+
+11/enero/2017 - Dublin, Irlanda
+
+
+
+
+
+
+
+
+Para utilizar esta aplicacion se debe
+-Actualizar base_url en
+	application/config/config.php
+-Actualizar la ruta de la BDD en 
+	application/config/database.php
+-Si se quiere utilizar la aplicacion desde una subcarpeta, es decir, no directamente desde el link, se debe utilizar este .htaccess (en la raiz del proyecto)
+	<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /nombre_subcarpeta
+	RewriteCond $1 !^(index\.php|public|\.txt)
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php?$1
+	</IfModule>
+
+	<IfModule !mod_rewrite.c>
+	# If we don't have mod_rewrite installed, all 	404's
+	# can be sent to index.php, and everything works as normal.
+	# Submitted by: ElliotHaughin
+
+	ErrorDocument 404 /nombre_subcarpeta/index.php
+</IfModule>
